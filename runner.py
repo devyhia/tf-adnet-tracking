@@ -12,6 +12,7 @@ import tensorflow as tf
 import time
 
 import commons
+import visualizer
 from boundingbox import BoundingBox, Coordinate
 from configs import ADNetConf
 from networks import ADNetwork
@@ -98,7 +99,8 @@ class ADNetRunner:
         if predicted_box is not None:
             predicted_box.draw(img, BoundingBox.COLOR_PREDICT)
 
-        cv2.imshow('result', img)
+        visualizer.image('result', img)
+        # cv2.imshow('result', img)
         cv2.waitKey(delay)
 
     def _get_features(self, samples):
@@ -312,7 +314,8 @@ class ADNetRunner:
             _logger.debug('finetuned')
             self.stopwatch.stop('tracking.online_finetune')
 
-        cv2.imshow('patch', patch)
+        visualizer.image('patch', patch)
+        # cv2.imshow('patch', patch)
         return curr_bbox
 
     def redetection_by_sampling(self, prev_box, img):

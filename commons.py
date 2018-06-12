@@ -2,6 +2,7 @@ import random
 
 import cv2
 import numpy as np
+import visualizer
 
 from configs import ADNetConf
 
@@ -80,4 +81,5 @@ def imshow_grid(title, images, cols, rows):
         y = (i // cols) * h
         x = (i % cols) * w
         canvas[y:y+h, x:x+w] = img
-    cv2.imshow(title, canvas)
+    visualizer.image(title, canvas)
+    # cv2.imshow(title, canvas)
